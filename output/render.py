@@ -109,6 +109,11 @@ def loudnorm(tl, src, dst, burn_ass=None, srt=None):
     ln2 = (f"{ln}:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
            f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:"
            f"offset={m['target_offset']}:linear=true,aresample={o['sample_rate']}")
+    if o.get("final_limiter", False):
+        # dynamic-mode loudnorm can overshoot its TP target; catch it with a 4x-oversampled limiter
+        lim = 10 ** ((o["true_peak_dbtp"] - 0.5) / 20)
+        ln2 += (f",aresample={o['sample_rate'] * 4},alimiter=limit={lim:.4f}:attack=2:release=50:level=disabled,"
+                f"aresample={o['sample_rate']}")
     cmd = ["ffmpeg", "-y", "-v", "error", "-i", src]
     if srt:
         cmd += ["-i", srt]
