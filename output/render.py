@@ -5,6 +5,7 @@ Usage (from the project root):
     python3 output/render.py                 # final.mp4 (burned subs) + final_nosub.mp4 + subtitles.srt
     python3 output/render.py --preview       # low-res preview_360p.mp4 only
     python3 output/render.py --suffix _v2    # write final_v2.mp4 etc. instead of overwriting
+    python3 output/render.py --timeline edit_timeline_v2.json --suffix _v2
 """
 import argparse
 import json
@@ -38,7 +39,8 @@ def srt_time(t):
 def write_srt(subs, path):
     with open(path, "w", encoding="utf-8") as f:
         for i, s in enumerate(subs, 1):
-            f.write(f"{i}\n{srt_time(s['start'])} --> {srt_time(s['end'])}\n{s['text']}\n\n")
+            text = f"<i>{s['text']}</i>" if s.get("italic") else s["text"]
+            f.write(f"{i}\n{srt_time(s['start'])} --> {srt_time(s['end'])}\n{text}\n\n")
 
 
 def build_graph(tl, scale=None):
@@ -62,15 +64,21 @@ def build_graph(tl, scale=None):
             f"afade=t=in:d=0.015,afade=t=out:st={adur - 0.015:.3f}:d=0.015[a{k}]")
         vlabels.append(f"[v{k}]")
         alabels.append(f"[a{k}]")
-    total = sum(s["video_out"] - s["video_in"] for s in segs)
-    vchain = (f"{''.join(vlabels)}concat=n={len(segs)}:v=1:a=0,"
-              f"fade=t=in:st=0:d={o['fade_in_sec']},"
+    hold = o.get("tail_hold_sec", 0)
+    total = sum(s["video_out"] - s["video_in"] for s in segs) + hold
+    vchain = f"{''.join(vlabels)}concat=n={len(segs)}:v=1:a=0,"
+    if hold:
+        # hold the last frame so the final line is not swallowed by the fade-out
+        vchain += f"tpad=stop_mode=clone:stop_duration={hold},"
+    vchain += (f"fade=t=in:st=0:d={o['fade_in_sec']},"
               f"fade=t=out:st={total - o['fade_out_sec']:.3f}:d={o['fade_out_sec']}")
     if scale:
         vchain += f",scale={scale}"
     parts.append(vchain + ",format=yuv420p[vout]")
     parts.append(
-        f"{''.join(alabels)}concat=n={len(segs)}:v=0:a=1,highpass=f=60,"
+        f"{''.join(alabels)}concat=n={len(segs)}:v=0:a=1,"
+        + (f"apad=pad_dur={hold}," if hold else "")
+        + f"highpass=f=60,"
         # gentle dialog compression + peak limiter so the final loudnorm can stay linear
         f"acompressor=threshold=-22dB:ratio=2.5:attack=10:release=150:makeup=1,"
         f"alimiter=limit=-5dB:attack=3:release=60:level=disabled,"
@@ -144,7 +152,8 @@ def write_ass(tl, path):
         "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
     ]
     for s in tl["subtitles"]:
-        lines.append(f"Dialogue: 0,{ass_t(s['start'])},{ass_t(s['end'])},Default,,0,0,0,,{s['text']}")
+        text = ("{\\i1}" + s["text"]) if s.get("italic") else s["text"]
+        lines.append(f"Dialogue: 0,{ass_t(s['start'])},{ass_t(s['end'])},Default,,0,0,0,,{text}")
     with open(path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
@@ -153,9 +162,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--preview", action="store_true")
     ap.add_argument("--suffix", default="")
+    ap.add_argument("--timeline", default="edit_timeline.json", help="file name inside output/")
     a = ap.parse_args()
-    tl = json.load(open(os.path.join(OUT, "edit_timeline.json"), encoding="utf-8"))
-    work = os.path.join(OUT, "_work")
+    tl = json.load(open(os.path.join(OUT, a.timeline), encoding="utf-8"))
+    work = os.path.join(OUT, "_work" + a.suffix)
     os.makedirs(work, exist_ok=True)
     ass = os.path.join(work, "subs.ass")
     write_ass(tl, ass)

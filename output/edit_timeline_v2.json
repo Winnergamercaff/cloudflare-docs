@@ -1,0 +1,225 @@
+{
+  "project": "พระธุดงค์ในป่า — ฉบับ 8 ช็อต (v2)",
+  "output": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "video_codec": "libx264",
+    "crf": 18,
+    "audio_codec": "aac",
+    "audio_bitrate": "192k",
+    "sample_rate": 48000,
+    "loudness_target_lufs": -16,
+    "true_peak_dbtp": -2.0,
+    "fade_in_sec": 0.5,
+    "fade_out_sec": 1.5,
+    "tail_hold_sec": 1.5
+  },
+  "segments": [
+    {
+      "id": "A",
+      "source": "input/shot1.mp4",
+      "video_in": 0.0,
+      "video_out": 4.375,
+      "audio_in": 0.0,
+      "audio_out": 4.5,
+      "audio_gain_db": -1.0,
+      "note": "ภาพกว้างพระยืนบนผา พร้อมเสียงบรรยายว่า 'หนทางแห่งธรรม' ตัดภาพออกที่เฟรม 105 ก่อนช่วง dissolve ที่มีภาพซ้อนเป็นพระสององค์ (4.375–4.875 วินาที) ส่วนเสียงลากต่อถึง 4.5 วินาทีเพื่อไม่ให้ตัดท้ายคำ (split edit)"
+    },
+    {
+      "id": "B",
+      "source": "input/shot1.mp4",
+      "video_in": 4.875,
+      "video_out": 10.0,
+      "audio_in": 5.0,
+      "audio_out": 10.0,
+      "audio_gain_db": -1.0,
+      "note": "ตัดตรงเข้าช็อตกลาง พระเดินในป่า พร้อมเสียงบรรยายว่า 'ไม่มีผู้ใดเดินแทนกันได้' ช่วงเสียงที่ตัดออก (4.5–5.0 วินาที) มีแต่เสียงบรรยากาศ"
+    },
+    {
+      "id": "C",
+      "source": "input/shot2.mp4",
+      "video_in": 0.0,
+      "video_out": 10.0,
+      "audio_in": 0.0,
+      "audio_out": 10.0,
+      "audio_gain_db": 0.0,
+      "note": "พบชายชราข้างป้าย ชายชราเตือน แล้วพระตอบ คงไว้ทั้งช็อตเพราะบทสนทนาต่อเนื่องจนถึง 9.85 วินาที"
+    },
+    {
+      "id": "D",
+      "source": "input/shot3.mp4",
+      "video_in": 0.0,
+      "video_out": 10.0,
+      "audio_in": 0.0,
+      "audio_out": 10.0,
+      "audio_gain_db": 3.0,
+      "note": "พระเดินเข้าหมอกในป่าลึกและกล่าวว่า 'เสียง… เป็นเพียงเสียง' ต่อเข้าช็อต 4 ด้วยการตัดตรง (ใน v2 ไม่ fade out ที่ช็อตนี้แล้ว)"
+    },
+    {
+      "id": "E",
+      "source": "input/shot4.mp4",
+      "video_in": 0.0,
+      "video_out": 10.0,
+      "audio_in": 0.0,
+      "audio_out": 10.0,
+      "audio_gain_db": 0.0,
+      "note": "พระเดินผ่านป่า มีเงาวิญญาณล้อมรอบ เสียงกระซิบ 'กลับไป' สองครั้ง คงทั้งช็อต"
+    },
+    {
+      "id": "F",
+      "source": "input/shot5.mp4",
+      "video_in": 0.0,
+      "video_out": 10.0,
+      "audio_in": 0.0,
+      "audio_out": 10.0,
+      "audio_gain_db": -3.0,
+      "note": "กลางคืน พระนั่งสมาธิในกลด แล้วลืมตา ช่วง 8.65–10.0 วินาทีมีเสียงกระแทก (stinger) ดังมาก พีคประมาณ −3 dBFS จึงลด gain ของช็อตนี้ −3 dB"
+    },
+    {
+      "id": "G",
+      "source": "input/shot6.mp4",
+      "video_in": 0.0,
+      "video_out": 10.0,
+      "audio_in": 0.0,
+      "audio_out": 10.0,
+      "audio_gain_db": -4.0,
+      "note": "มุมมองจากในกลด เงาวิญญาณยืนเรียงกัน มีเสียงหัวเราะและเสียงเรียก 'กลัวหรือ พระภาวิน' แล้วตัดสลับภาพใกล้หน้าพระ เสียงบรรยากาศในช็อตนี้ดังมาก"
+    },
+    {
+      "id": "H",
+      "source": "input/shot7.mp4",
+      "video_in": 0.0,
+      "video_out": 10.0,
+      "audio_in": 0.0,
+      "audio_out": 10.0,
+      "audio_gain_db": -3.0,
+      "note": "วิญญาณก่อตัวเป็นชายชุดดำ กระซิบข้างหูพระ"
+    },
+    {
+      "id": "I",
+      "source": "input/shot8.mp4",
+      "video_in": 0.0,
+      "video_out": 10.0,
+      "audio_in": 0.0,
+      "audio_out": 10.0,
+      "audio_gain_db": -4.0,
+      "note": "ฝูงชนชี้และตะโกน พระวางมือแตะพื้น (ท่ามารวิชัย) แล้วกล่าวประโยคปิด ต่อด้วยค้างเฟรมสุดท้าย 1.5 วินาทีแล้ว fade out"
+    }
+  ],
+  "audio_chain": "per-segment gain -> 15ms edge fades -> concat -> highpass 60Hz -> compressor (-22dB, 2.5:1) -> limiter (-5dBFS) -> two-pass linear loudnorm (last clip padded with 1.5 s silence during the held frame)",
+  "video_chain": "trim -> concat -> fade in/out -> (optional) burn-in subtitles",
+  "subtitles": [
+    {
+      "start": 3.15,
+      "end": 4.55,
+      "text": "หนทางแห่งธรรม",
+      "source": "A 3.15–4.45"
+    },
+    {
+      "start": 5.25,
+      "end": 7.25,
+      "text": "ไม่มีผู้ใดเดินแทนกันได้",
+      "source": "B 5.75–7.50"
+    },
+    {
+      "start": 11.95,
+      "end": 12.8,
+      "text": "พอตะวันตกดิน",
+      "source": "C 2.45–3.30"
+    },
+    {
+      "start": 12.8,
+      "end": 14.75,
+      "text": "คนที่เข้าไปมักไม่ได้กลับออกมา",
+      "source": "C 3.30–5.10"
+    },
+    {
+      "start": 15.75,
+      "end": 17.5,
+      "text": "สิ่งที่เรากลัว อาจไม่ได้น่ากลัว",
+      "source": "C 6.25–8.00"
+    },
+    {
+      "start": 17.5,
+      "end": 19.4,
+      "text": "เท่าจิตที่ปรุงแต่งมันขึ้นมา",
+      "source": "C 8.00–9.85"
+    },
+    {
+      "start": 26.4,
+      "end": 27.45,
+      "text": "เสียง…",
+      "source": "D 6.90–7.55"
+    },
+    {
+      "start": 27.55,
+      "end": 28.9,
+      "text": "เป็นเพียงเสียง",
+      "source": "D 8.05–8.90"
+    },
+    {
+      "start": 32.85,
+      "end": 33.95,
+      "text": "กลับไป…",
+      "italic": true,
+      "source": "E 3.35–4.10 เสียงกระซิบของวิญญาณ (นอกจอ)"
+    },
+    {
+      "start": 36.5,
+      "end": 38.1,
+      "text": "กลับไป…",
+      "italic": true,
+      "source": "E 7.00–8.60 เสียงกระซิบของวิญญาณ (นอกจอ)"
+    },
+    {
+      "start": 54.3,
+      "end": 55.9,
+      "text": "กลัวหรือ พระภาวิน",
+      "italic": true,
+      "source": "G 4.85–5.85 เสียงนอกจอ ชื่อ 'ภาวิน' ยังไม่แน่ชัด ควรทบทวน"
+    },
+    {
+      "start": 64.45,
+      "end": 65.95,
+      "text": "เจ้านี้ออกมาบวช",
+      "source": "H 5.00–5.85 คำว่า 'นี้' ยังไม่แน่ชัด (ถอดได้ นี/นี้) ควรทบทวน"
+    },
+    {
+      "start": 66.25,
+      "end": 68.2,
+      "text": "เพราะเจ้ากลัว ไม่ใช่หรือ",
+      "source": "H 6.80–7.95"
+    },
+    {
+      "start": 71.8,
+      "end": 73.1,
+      "text": "เจ้าช่วยใครไม่ได้",
+      "source": "I 2.30–3.60"
+    },
+    {
+      "start": 73.1,
+      "end": 75.8,
+      "text": "เจ้าจะไม่มีวันพบธรรม",
+      "source": "I 3.60–6.20"
+    },
+    {
+      "start": 77.35,
+      "end": 79.45,
+      "text": "นี่คือความ… ไม่ใช่ความจริง",
+      "source": "I 7.85–9.90 ถอดได้ตรงกันทุกรอบ ท้ายช่วงมีคำที่ฟังไม่ออก (ผมหมด/หมหมด) จึงไม่ใส่ซับ"
+    }
+  ],
+  "subtitle_style": {
+    "font_file": "output/fonts/Loma-Bold.otf",
+    "font_name": "Loma",
+    "bold": true,
+    "font_size": 54,
+    "font_note": "Sarabun/Prompt/Kanit/Noto Sans Thai ทำให้วรรณยุกต์ที่ซ้อนบนสระบน (เช่น สิ่ง, ที่) หายไปเมื่อเรนเดอร์ด้วย libass 0.17.1 ในเครื่องนี้ Loma (TLWG) เรนเดอร์ถูกต้อง",
+    "primary_color": "&H00FFFFFF",
+    "outline_color": "&H00000000",
+    "outline": 3,
+    "shadow": 1,
+    "margin_v": 70
+  }
+}
