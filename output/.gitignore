@@ -1,0 +1,2 @@
+# rendered videos are delivered separately; rebuild with: python3 output/render.py
+*.mp4
